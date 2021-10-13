@@ -38,7 +38,7 @@ pip3 install -e .
  
     * `peek «column|row» «name»`
 
-**ls:** show the names of all column, rows or both
+* **ls:** show the names of all column, rows or both
  
     * `ls «column|row| »`
 
