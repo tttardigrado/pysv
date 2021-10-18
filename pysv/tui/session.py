@@ -15,7 +15,7 @@ from prompt_toolkit.shortcuts import radiolist_dialog
 from prompt_toolkit.styles import Style
 from prompt_toolkit.history import FileHistory
 import pyperclip
-from typing import List, Tuple
+from typing import List, Tuple, Union
 
 
 class Session:
@@ -148,7 +148,7 @@ class Session:
             p_print(help_msg)
 
         elif first_word in {"load", "ld"}:
-            self.csv = load_csv(commands[1])
+            self.load_function(commands)
 
         elif first_word in {"delete", "del"}:
             msg: str = self.delete_function(commands)
@@ -206,12 +206,26 @@ class Session:
 
         if first_word in {"clear", "cls", "c"}:
             clear_screen()
+
         elif first_word in {"help", "h"}:
             p_print(help_msg)
+
         elif first_word in {"load", "ld"}:
-            self.csv = load_csv(commands[1])
+            self.load_function(commands)
+
         else:
             self.no_csv()
+
+    def load_function(self, commands: List[str]) -> None:
+        # try to get the path of the file from the named files dict
+        # if the file is named -> return the path else -> None
+        named: Union[str, None] = self.settings.named_files.get(commands[1])
+
+        # path = Path/to/named/file or Path/provided/using/the/prompt
+        path: str = named or commands[1]
+
+        # load the csv
+        self.csv = load_csv(path)
 
     def cell_function(self, command: List[str]) -> Tuple[str, str]:
         try:

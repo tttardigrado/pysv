@@ -30,9 +30,9 @@ pip3 install -e .
 ## Usage
 * **load, ld:** Load a new csv file into memory
 
-    * `load «path_to_file»`
+    * `load «path_to_file|named_file»`
  
-    * `ld «path_to_file»`
+    * `ld «path_to_file|named_file»`
 
 * **peek:** show a single column or row
  
@@ -87,10 +87,10 @@ pip3 install -e .
 
 * list function
 * custom keybindings
-* default settings
+* ~default settings~
 * publish to pipy
 * save new CSV to the old or to a new file
-* Add to the settings an option for named files
+* ~Add to the settings an option for named files~
 * set cell error messages
 * reformat
 * add more docs

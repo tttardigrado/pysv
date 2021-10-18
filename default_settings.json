@@ -1,0 +1,15 @@
+{
+  "color_scheme": "nord",
+  "colors": {
+    "bg": "",
+    "border": "",
+    "title": "",
+    "text1": "",
+    "text2": ""
+  },
+  "clear_key": "m-c",
+  "list_key": "m-l",
+  "show_key": "m-s",
+  "help_key": "m-h",
+  "named_files": {}
+}

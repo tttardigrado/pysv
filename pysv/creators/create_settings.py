@@ -21,13 +21,15 @@ def make_settings(path: str = "~/.config/pysv/config.json") -> Settings:
         p_print(error_message("There's no settings file!", title="Warning"))
         return Settings()
 
-    scheme: Colors = make_color_scheme(data["colors"])
+    scheme: Colors = make_color_scheme(data)
+    files: dict = data.get("named_files") or {}
     clear_key: str = data.get("clear_key") or DEFAULT_CL_S_KEY
     list_key: str = data.get("list_key") or DEFAULT_LIST_KEY
     show_key: str = data.get("show_key") or DEFAULT_SHOW_KEY
     help_key: str = data.get("help_key") or DEFAULT_HELP_KEY
 
     return Settings(
+        named_files=files,
         color_scheme=scheme,
         clear_key=clear_key,
         list_key=list_key,
