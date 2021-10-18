@@ -337,7 +337,7 @@ class CSVFile:
                 "",
             )
 
-    def set_cell(self, col: str, row: str, content: str) -> bool:
+    def set_cell(self, col: str, row: str, content: str) -> str:
         """
         Set the content of the specified cell
 
@@ -347,12 +347,10 @@ class CSVFile:
             value (str): value that the cell should be set to
 
         Returns:
-            (bool): If the cell was or was not set
+            (str): Message that says if there was an error or the cell was set
         """
-        # TODO: Make it return a message and not a bool
-        # the cell can't be set if one of these values is not provided
         if not (col or row or content):
-            return False
+            return error_message("It's not possible to set that cell")
 
         try:
             # index of the column
@@ -361,9 +359,11 @@ class CSVFile:
             row_index: int = int(row)
 
             self.rows[row_index][col_index] = content
-            return True
+            return title_message(
+                "Set", f"The cell «{col} - {row}» was set to {content}"
+            )
 
         except (ValueError, IndexError):
             # a ValueError means that the column does not exist
             # an Index Error means that the row does not exist
-            return False
+            return error_message("It's not possible to set that cell")

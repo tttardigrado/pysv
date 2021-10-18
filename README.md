@@ -91,7 +91,7 @@ pip3 install -e .
 * publish to pipy
 * save new CSV to the old or to a new file
 * ~Add to the settings an option for named files~
-* set cell error messages
+* ~set cell error messages~
 * reformat
 * add more docs
 

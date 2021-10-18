@@ -271,9 +271,7 @@ class Session:
                 )
 
             if value:
-                was_set: bool = self.csv.set_cell(col, row, value)
-                if was_set:
-                    return title_message("Set to", value)
+                return self.csv.set_cell(col, row, value)
             return error_message("The value was not set!")
 
         else:
