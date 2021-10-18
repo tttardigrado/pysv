@@ -86,7 +86,7 @@ pip3 install -e .
 ## TODO
 
 * list function
-* custom keybindings
+* ~custom keybindings~
 * ~default settings~
 * publish to pipy
 * save new CSV to the old or to a new file

@@ -2,16 +2,13 @@ from pysv.classes.color import Colors
 from os import path
 
 # Default key binding to CLear the Screen
-DEFAULT_CL_S_KEY: str = "m-c"
+DEFAULT_CL_S_KEY: str = "c"
 
 # Default key binding to list all rows and columns
-DEFAULT_LIST_KEY: str = "m-l"
+DEFAULT_LIST_KEY: str = "l"
 
 # Default key binding to show the help message
-DEFAULT_HELP_KEY: str = "m-h"
-
-# Default key binding to show the csv as an html table
-DEFAULT_SHOW_KEY: str = "m-s"
+DEFAULT_HELP_KEY: str = "h"
 
 # Nord color scheme
 NORD: Colors = Colors(

@@ -7,9 +7,8 @@
     "text1": "",
     "text2": ""
   },
-  "clear_key": "m-c",
-  "list_key": "m-l",
-  "show_key": "m-s",
-  "help_key": "m-h",
+  "clear_key": "c",
+  "list_key": "l",
+  "help_key": "h",
   "named_files": {}
 }

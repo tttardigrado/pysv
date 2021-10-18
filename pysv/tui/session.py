@@ -3,12 +3,13 @@ from prompt_toolkit.shortcuts.dialogs import input_dialog
 from pysv.defaults import DEFAULT_HISTORY_PATH
 from pysv.functions.html import show_html_table
 from pysv.creators.create_csv_file import load_csv
-from pysv.functions.output import error_message, title_message
+from pysv.functions.output import error_message
 from pysv.classes.csv_file import CSVFile
 from pysv.classes.settings import Settings
 from pysv.creators.create_settings import make_settings
 from pysv.functions.general import clear_screen, p_print
 from pysv.tui.constants import prompt_txt, bottom_toolbar, help_msg
+from pysv.tui.bindings import make_bindings
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import NestedCompleter
 from prompt_toolkit.shortcuts import radiolist_dialog
@@ -127,6 +128,7 @@ class Session:
             complete_while_typing=True,
             history=FileHistory(DEFAULT_HISTORY_PATH),
             auto_suggest=AutoSuggestFromHistory(),
+            key_bindings=make_bindings(self.settings),
         )
 
     def process_input(self, command: str) -> None:
@@ -219,7 +221,9 @@ class Session:
     def load_function(self, commands: List[str]) -> None:
         # try to get the path of the file from the named files dict
         # if the file is named -> return the path else -> None
-        named: Union[str, None] = self.settings.named_files.get(commands[1])
+        named: Union[str, None] = self.settings.named_files.get_file(
+            commands[1], commands[1]
+        )
 
         # path = Path/to/named/file or Path/provided/using/the/prompt
         path: str = named or commands[1]

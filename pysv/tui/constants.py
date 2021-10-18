@@ -5,8 +5,8 @@ bottom_toolbar: str = " PySV: A terminal app to help you with your CSV file"
 help_msg_1: str = """Help
 
 {load, ld:} Load a new csv file into memory
-    (load «path_to_file»)
-    (ld «path_to_file»)
+    (load «path_to_file|named_file»)
+    (ld «path_to_file|named_file»)
 
 {peek:} show a single column or row
     (peek «column|row» «name»)
