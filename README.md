@@ -34,13 +34,19 @@ pip3 install -e .
  
     * `ld «path_to_file|named_file»`
 
+* **save, sv:** Save the currently loaded csv to a file
+
+    * `save «path_to_file|NONE»`
+
+    * `sv «path_to_file|NONE»`
+
 * **peek:** show a single column or row
  
     * `peek «column|row» «name»`
 
 * **ls:** show the names of all column, rows or both
  
-    * `ls «column|row| »`
+    * `ls «column|row|NONE»`
 
 * **delete, del:** delete all the values on a specified column or row
  
@@ -89,9 +95,9 @@ pip3 install -e .
 * ~custom keybindings~
 * ~default settings~
 * publish to pipy
-* save new CSV to the old or to a new file
-* ~Add to the settings an option for named files~
-* ~set cell error messages~
+* ~~save new CSV to the old or to a new file~~
+* ~~Add to the settings an option for named files~~
+* ~~set cell error messages~~
 * reformat
 * add more docs
 

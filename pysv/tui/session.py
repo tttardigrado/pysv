@@ -152,6 +152,12 @@ class Session:
         elif first_word in {"load", "ld"}:
             self.load_function(commands)
 
+        elif first_word in {"save", "sv"}:
+            if len(commands) > 1:
+                self.csv.save(commands[1])
+            else:
+                self.csv.save()
+
         elif first_word in {"delete", "del"}:
             msg: str = self.delete_function(commands)
             if msg:

@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pysv.functions.general import make_csv_row
 from typing import List, Tuple
 from pysv.functions.output import error_message, title_message
 
@@ -9,6 +10,27 @@ class CSVFile:
 
     header: List[str]  # column names / table header
     rows: List[List[str]]  # rows of he csv file
+    path: str = ""
+
+    def render(self) -> str:
+        # TODO: Comment
+        # create the csv header H1, H2, H3, ... Hn
+        output: str = make_csv_row(self.header)
+
+        # create a new row on the CSV for every row in this class
+        for row in self.rows:
+            output += make_csv_row(row)
+
+        return output
+
+    def save(self, new_path: str = "") -> None:
+        # TODO: Comment
+        path: str = new_path or self.path
+        try:
+            with open(path, "w") as f:
+                f.write(self.render())
+        except Exception as e:
+            print(e)
 
     def is_loaded(self) -> bool:
         """
@@ -28,6 +50,7 @@ class CSVFile:
         self.rows.append(row)
 
     def make_table_str(self) -> str:
+        # TODO: Comment
         table: str = "<table><tr><th>#</th>"
         for head in self.header:
             table += f"<th>{head}</th>"

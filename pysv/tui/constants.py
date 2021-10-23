@@ -8,6 +8,11 @@ help_msg_1: str = """Help
     (load «path_to_file|named_file»)
     (ld «path_to_file|named_file»)
 
+{save, sv:} Save the currently loaded csv to a file
+    (save «path_to_file|NONE»)
+
+    (sv «path_to_file|NONE»)
+
 {peek:} show a single column or row
     (peek «column|row» «name»)
 

@@ -1,4 +1,5 @@
 from os import system, path, makedirs
+from typing import List
 from prompt_toolkit import print_formatted_text, HTML
 from pysv.defaults import (
     DEFAULT_CONFIG_DIR,
@@ -15,7 +16,17 @@ def clear_screen() -> None:
 
 
 def p_print(text: str) -> None:
+    """
+    Pretty print HTML-like formated text
+
+    Arguments:
+        text(str): HTML-like formated string
+    """
     print_formatted_text(HTML(text))
+
+
+def make_csv_row(row: List[str]) -> str:
+    return ", ".join(row) + "\n"
 
 
 def make_file(path_to_file: str) -> None:
