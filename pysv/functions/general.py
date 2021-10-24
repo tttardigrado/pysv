@@ -26,7 +26,16 @@ def p_print(text: str) -> None:
 
 
 def make_csv_row(row: List[str]) -> str:
-    return ", ".join(row) + "\n"
+    """
+    Join all values on a list into a CSV style string
+
+    Argumnets:
+        row (List[str]): list of strings that should be concatenated
+
+    Returns:
+        (str): string with the elements separated by commas
+    """
+    return ",".join(row) + "\n"
 
 
 def make_file(path_to_file: str) -> None:

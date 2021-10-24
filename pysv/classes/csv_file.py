@@ -13,7 +13,12 @@ class CSVFile:
     path: str = ""
 
     def render(self) -> str:
-        # TODO: Comment
+        """
+        Render the CSV as a default csv file string
+
+        Returns:
+            (str): CSVFile as a default csv string
+        """
         # create the csv header H1, H2, H3, ... Hn
         output: str = make_csv_row(self.header)
 
@@ -23,14 +28,31 @@ class CSVFile:
 
         return output
 
-    def save(self, new_path: str = "") -> None:
-        # TODO: Comment
+    def save(self, new_path: str = "") -> str:
+        """
+        Save the CSV to a file
+
+        Arguments:
+            new_path (str): Path where the file should be stored
+                (Defaults to self.path)
+
+        Reurns:
+            (str): Message saying if the save was successful or failed
+        """
+        # get a path if none was provided
         path: str = new_path or self.path
+
         try:
+            # save the file
             with open(path, "w") as f:
+                # generate and write the csv
                 f.write(self.render())
-        except Exception as e:
-            print(e)
+
+            return title_message(
+                "Saved", f"the file was successfully saved to «{path}»."
+            )
+        except Exception:
+            return error_message("There was an error trying to save the file!")
 
     def is_loaded(self) -> bool:
         """

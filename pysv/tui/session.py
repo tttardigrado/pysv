@@ -1,5 +1,4 @@
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
-from prompt_toolkit.shortcuts.dialogs import input_dialog
 from pysv.defaults import DEFAULT_HISTORY_PATH
 from pysv.functions.html import show_html_table
 from pysv.creators.create_csv_file import load_csv
@@ -10,10 +9,9 @@ from pysv.creators.create_settings import make_settings
 from pysv.functions.general import clear_screen, p_print
 from pysv.tui.constants import prompt_txt, bottom_toolbar, help_msg
 from pysv.tui.bindings import make_bindings
+from pysv.tui.tui_function import radio, copied_input, non_copied_input
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import NestedCompleter
-from prompt_toolkit.shortcuts import radiolist_dialog
-from prompt_toolkit.styles import Style
 from prompt_toolkit.history import FileHistory
 import pyperclip
 from typing import List, Tuple, Union
@@ -154,9 +152,9 @@ class Session:
 
         elif first_word in {"save", "sv"}:
             if len(commands) > 1:
-                self.csv.save(commands[1])
+                p_print(self.csv.save(commands[1]))
             else:
-                self.csv.save()
+                p_print(self.csv.save())
 
         elif first_word in {"delete", "del"}:
             msg: str = self.delete_function(commands)
@@ -407,27 +405,3 @@ class Session:
 
         except IndexError:
             return ""
-
-
-def radio(title: str, options: List[str], style: Style) -> str:
-    final_op: list = []
-    for op in options:
-        final_op.append((op, op))
-
-    return radiolist_dialog(
-        title=f"Choose a {title}", values=final_op, style=style
-    ).run()
-
-
-def copied_input(title: str, style: Style) -> str:
-    return input_dialog(
-        title=title,
-        text="To edit the content of the cell press the Paste key",
-        style=style,
-    ).run()
-
-
-def non_copied_input(title: str, style: Style) -> str:
-    return input_dialog(
-        title=title, text="Type the new cell content:", style=style
-    ).run()

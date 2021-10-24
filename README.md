@@ -88,21 +88,23 @@ pip3 install -e .
 
 * **TUI:** Terminal User Interface
 * **CSV:** Comma Separated Values
+* **CLI:** Command Line Interface
+
+## Color Schemes
+
+* Nord
+* Gruvbox
+* Dracula
+* Monokai
+* Palenight
 
 ## TODO
-
-* list function
-* ~custom keybindings~
-* ~default settings~
 * publish to pipy
-* ~~save new CSV to the old or to a new file~~
-* ~~Add to the settings an option for named files~~
-* ~~set cell error messages~~
-* reformat
-* add more docs
+* CLI commands to auto-load a file
+* CLI commands to re-generate the default settings
 
 ## Contributions
-* If you want to contribute with code, pease open a PR
+* If you want to contribute with code, please open a PR
 * Preferably the code should be documented and typed
 * If you find any issue open an issue
 * If you have any idea/improvement/suggestion open an issue
