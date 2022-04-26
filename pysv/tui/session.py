@@ -222,15 +222,16 @@ class Session:
         else:
             self.no_csv()
 
-    def load_function(self, commands: List[str]) -> None:
+    def load_function(self, command: List[str]) -> None:
+        self.load_file(command[1])
+
+    def load_file(self, file: str) -> None:
         # try to get the path of the file from the named files dict
         # if the file is named -> return the path else -> None
-        named: Union[str, None] = self.settings.named_files.get_file(
-            commands[1], commands[1]
-        )
+        named: Union[str, None] = self.settings.named_files.get_file(file, file)
 
         # path = Path/to/named/file or Path/provided/using/the/prompt
-        path: str = named or commands[1]
+        path: str = named or file
 
         # load the csv
         self.csv = load_csv(path)
